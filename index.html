@@ -7,9 +7,6 @@
   <link rel="icon" href="icon_512x512.png" type="image/png" />
   <link rel="apple-touch-icon" href="icon_512x512.png" />
   <link rel="manifest" href="manifest.json" />
-  
-  <!-- QR Code Scanner Library -->
-  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 
   <style>
     :root {
@@ -155,292 +152,41 @@
       z-index: 1;
       transition: color 0.3s ease;
     }
-
-    /* Password Modal */
-    .password-modal {
-      display: flex;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .password-modal.hidden {
-      display: none;
-    }
-
-    .password-box {
-      background: var(--button-bg);
-      padding: 40px 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-      backdrop-filter: blur(10px);
-    }
-
-    .password-box h2 {
-      color: var(--text-heading);
-      margin-bottom: 20px;
-    }
-
-    .password-box input {
-      width: 100%;
-      padding: 12px;
-      border: 2px solid var(--button-border);
-      border-radius: 8px;
-      font-size: 1em;
-      text-align: center;
-      margin-bottom: 20px;
-      background: rgba(255, 255, 255, 0.5);
-      color: var(--text-primary);
-    }
-
-    .password-box input:focus {
-      outline: none;
-      border-color: var(--text-primary);
-    }
-
-    .password-box button {
-      background: var(--text-primary);
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 8px;
-      font-size: 1em;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .password-box button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
-    }
-
-    .error-message {
-      color: #f44336;
-      font-size: 0.9em;
-      margin-top: 10px;
-      display: none;
-    }
-
-    .error-message.show {
-      display: block;
-    }
-
-    /* QR Scanner Modal */
-    .scanner-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.95);
-      z-index: 10000;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    .scanner-modal.active {
-      display: flex;
-    }
-
-    .scanner-container {
-      width: 90%;
-      max-width: 500px;
-      position: relative;
-    }
-
-    .scanner-header {
-      color: white;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .scanner-header h2 {
-      margin-bottom: 10px;
-    }
-
-    .scanner-header p {
-      font-size: 0.9em;
-      opacity: 0.8;
-    }
-
-    #reader {
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    }
-
-    .scanner-close {
-      position: absolute;
-      top: -50px;
-      right: 0;
-      background: rgba(244, 67, 54, 0.9);
-      color: white;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.5em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .scanner-close:hover {
-      background: #f44336;
-      transform: scale(1.1);
-    }
-
-    .scanner-result {
-      background: rgba(76, 175, 80, 0.9);
-      color: white;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-      text-align: center;
-      display: none;
-    }
-
-    .scanner-result.show {
-      display: block;
-    }
-
-    #mainContent {
-      display: none;
-    }
-
-    #mainContent.unlocked {
-      display: block;
-    }
   </style>
 </head>
 <body>
-  <!-- Password Modal -->
-  <div class="password-modal" id="passwordModal">
-    <div class="password-box">
-      <h2>🔐 Masukkan Password</h2>
-      <input type="password" id="passwordInput" placeholder="Password..." onkeypress="if(event.key==='Enter') checkPassword()" />
-      <button onclick="checkPassword()">Masuk</button>
-      <div class="error-message" id="errorMessage">❌ Password salah!</div>
-    </div>
-  </div>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+    <span id="theme-icon">🌙</span>
+  </button>
+  
+  <div class="logo-watermark"></div>
 
-  <!-- Main Content (hidden sampai password benar) -->
-  <div id="mainContent">
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
-      <span id="theme-icon">🌙</span>
-    </button>
-    
-    <div class="logo-watermark"></div>
+  <h1>PGI Core</h1>
 
-    <h1>PGI Core</h1>
+  <a class="link-button" href="https://gadai.pugindo.com/gadai/simulasi" target="_blank" rel="noopener noreferrer">PUGINDO</a>
+  <a class="link-button" href="https://www.imei.info/" target="_blank" rel="noopener noreferrer">IMEI Info</a>
+  <a class="link-button" href="https://survey.pusatgadai.id/?cabang=BDG026#step-1" target="_blank" rel="noopener noreferrer">Survey</a>
+  <a class="link-button" href="https://approval.pgindonesia.com/" target="_blank" rel="noopener noreferrer">HRIS PGI</a>
+  <a class="link-button" href="https://notebooklm.google.com/notebook/d40f54cc-474b-4d0a-955c-d48ba41d9489" target="_blank" rel="noopener noreferrer">Panduan SE</a>
+  <a class="link-button" href="https://jadwalbdg016.netlify.app/" target="_blank" rel="noopener noreferrer">Jadwal Libur</a>
+  <a class="link-button" href="https://linktr.ee/outletpgi" target="_blank" rel="noopener noreferrer">Linktree Outlet PGI</a>
+  <div class="link-info">🔐 password : 4291</div>
+  <a class="link-button" href="https://everymac.com/ultimate-mac-lookup/" target="_blank" rel="noopener noreferrer">EveryMac</a>
 
-    <a class="link-button" href="https://gadai.pugindo.com/gadai/simulasi" target="_blank" rel="noopener noreferrer">PUGINDO</a>
-    <a class="link-button" href="https://www.imei.info/" target="_blank" rel="noopener noreferrer">IMEI Info</a>
-    <a class="link-button" href="#" onclick="openScanner(event)">📷 Scan Survey</a>
-    <a class="link-button" href="https://approval.pgindonesia.com/" target="_blank" rel="noopener noreferrer">HRIS PGI</a>
-    <a class="link-button" href="https://notebooklm.google.com/notebook/d40f54cc-474b-4d0a-955c-d48ba41d9489" target="_blank" rel="noopener noreferrer">Panduan SE</a>
-    <a class="link-button" href="https://jadwalbdg016.netlify.app/" target="_blank" rel="noopener noreferrer">Jadwal Libur</a>
-    <a class="link-button" href="https://linktr.ee/outletpgi" target="_blank" rel="noopener noreferrer">Linktree Outlet PGI</a>
-    <div class="link-info">🔐 password : 4291</div>
-    <a class="link-button" href="https://everymac.com/ultimate-mac-lookup/" target="_blank" rel="noopener noreferrer">EveryMac</a>
+  <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://apkpure.net/id/device-info-system-cpu-info/com.ytheekshana.deviceinfo/download/3.3.5.16" alt="QR Code Device Info" />
 
-    <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://apkpure.net/id/device-info-system-cpu-info/com.ytheekshana.deviceinfo/download/3.3.5.16" alt="QR Code Device Info" />
-
-    <footer>
-      &copy; N. Senggara Wibiksono – PGI
-    </footer>
-  </div>
-
-  <!-- QR Scanner Modal -->
-  <div class="scanner-modal" id="scannerModal">
-    <div class="scanner-container">
-      <button class="scanner-close" onclick="closeScanner()">×</button>
-      <div class="scanner-header">
-        <h2>📷 Scan Barcode Survey</h2>
-        <p>Arahkan kamera ke barcode kepuasan pelayanan</p>
-      </div>
-      <div id="reader"></div>
-      <div class="scanner-result" id="scannerResult">
-        ✅ Berhasil! Membuka survey...
-      </div>
-    </div>
-  </div>
+  <footer>
+    &copy; N. Senggara Wibiksono – PGI
+  </footer>
 
   <script>
-    // Password yang benar (ganti sesuai keinginan)
-    const CORRECT_PASSWORD = 'pgi2025'; // ⬅️ GANTI PASSWORD DI SINI
-
-    // Cek apakah sudah pernah login (tersimpan 24 jam)
-    function checkLogin() {
-      const loginTime = localStorage.getItem('loginTime');
-      if (loginTime) {
-        const now = new Date().getTime();
-        const timeDiff = now - parseInt(loginTime);
-        // Kalau belum lewat 24 jam (86400000 ms), auto masuk
-        if (timeDiff < 86400000) {
-          unlockContent();
-          return true;
-        }
-      }
-      return false;
-    }
-
-    // Cek password
-    function checkPassword() {
-      const input = document.getElementById('passwordInput').value;
-      const errorMsg = document.getElementById('errorMessage');
-      
-      if (input === CORRECT_PASSWORD) {
-        // Password benar
-        localStorage.setItem('loginTime', new Date().getTime());
-        unlockContent();
-      } else {
-        // Password salah
-        errorMsg.classList.add('show');
-        document.getElementById('passwordInput').value = '';
-        document.getElementById('passwordInput').focus();
-        
-        // Shake animation
-        const box = document.querySelector('.password-box');
-        box.style.animation = 'shake 0.5s';
-        setTimeout(() => {
-          box.style.animation = '';
-          errorMsg.classList.remove('show');
-        }, 2000);
-      }
-    }
-
-    // Unlock content
-    function unlockContent() {
-      document.getElementById('passwordModal').classList.add('hidden');
-      document.getElementById('mainContent').classList.add('unlocked');
-      applyTheme();
-    }
-
-    // Theme functionality
-    function applyTheme() {
-      const currentTheme = localStorage.getItem('theme') || 'light';
-      const themeIcon = document.getElementById('theme-icon');
-      
-      if (currentTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        if (themeIcon) themeIcon.textContent = '☀️';
-      }
+    // Cek preferensi theme yang tersimpan
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    const themeIcon = document.getElementById('theme-icon');
+    
+    if (currentTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      themeIcon.textContent = '☀️';
     }
 
     function toggleTheme() {
@@ -457,86 +203,6 @@
         localStorage.setItem('theme', 'light');
       }
     }
-
-    // Shake animation CSS
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-10px); }
-        75% { transform: translateX(10px); }
-      }
-    `;
-    document.head.appendChild(style);
-
-    // Check login on page load
-    if (!checkLogin()) {
-      document.getElementById('passwordInput').focus();
-    }
-
-    // QR Scanner functionality
-    let html5QrCode = null;
-
-    function openScanner(event) {
-      event.preventDefault();
-      
-      const modal = document.getElementById('scannerModal');
-      modal.classList.add('active');
-      
-      // Initialize scanner - langsung pakai kamera belakang
-      html5QrCode = new Html5Qrcode("reader");
-      
-      // Start scanning dengan kamera belakang
-      html5QrCode.start(
-        { facingMode: "environment" }, // environment = kamera belakang
-        {
-          fps: 10,
-          qrbox: { width: 250, height: 250 }
-        },
-        onScanSuccess,
-        onScanError
-      ).catch(err => {
-        console.error("Camera error:", err);
-        alert("Tidak bisa mengakses kamera. Pastikan izin kamera sudah diaktifkan.");
-        closeScanner();
-      });
-    }
-
-    function onScanSuccess(decodedText, decodedResult) {
-      // Tampilkan hasil
-      const resultDiv = document.getElementById('scannerResult');
-      resultDiv.classList.add('show');
-      
-      // Stop scanner
-      html5QrCode.stop();
-      
-      // Redirect ke URL hasil scan setelah 1 detik
-      setTimeout(() => {
-        window.open(decodedText, '_blank');
-        closeScanner();
-      }, 1000);
-    }
-
-    function onScanError(errorMessage) {
-      // Abaikan error (normal saat scanning)
-    }
-
-    function closeScanner() {
-      const modal = document.getElementById('scannerModal');
-      modal.classList.remove('active');
-      
-      const resultDiv = document.getElementById('scannerResult');
-      resultDiv.classList.remove('show');
-      
-      if (html5QrCode) {
-        html5QrCode.stop().then(() => {
-          html5QrCode.clear();
-          html5QrCode = null;
-        }).catch(err => {
-          console.error("Stop error:", err);
-        });
-      }
-    }
   </script>
 </body>
-</html>
+</html> 
