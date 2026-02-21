@@ -273,108 +273,6 @@
       transition: opacity 0.5s ease;
     }
 
-    /* Desktop Layout */
-    @media (min-width: 1024px) {
-      #mainContent {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 60px 80px;
-        max-width: 1600px;
-        margin: 0 auto;
-        min-height: 100vh;
-      }
-
-      .left-section {
-        flex: 0 0 45%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding-right: 60px;
-      }
-
-      .logo-watermark {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        opacity: 0.9;
-        width: 400px;
-        height: 400px;
-        background-size: contain;
-        animation: floatLogo 6s ease-in-out infinite;
-      }
-
-      @keyframes floatLogo {
-        0%, 100% {
-          transform: translateY(0) rotate(0deg);
-        }
-        50% {
-          transform: translateY(-20px) rotate(5deg);
-        }
-      }
-
-      h1 {
-        font-size: 3.5em;
-        margin-top: 30px;
-        margin-bottom: 20px;
-      }
-
-      .tagline {
-        font-size: 1.2em;
-        color: var(--text-primary);
-        opacity: 0.8;
-        text-align: center;
-        max-width: 400px;
-      }
-
-      .right-section {
-        flex: 0 0 50%;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        padding-left: 40px;
-      }
-
-      .right-section .link-button {
-        width: 100%;
-        max-width: 500px;
-        padding: 18px 25px;
-        font-size: 1.1em;
-        transform: translateX(0);
-        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      }
-
-      .right-section .link-button:hover {
-        transform: translateX(10px) scale(1.02);
-        box-shadow: -5px 5px 20px rgba(21, 101, 192, 0.3);
-      }
-
-      img.qr {
-        margin-top: 40px;
-      }
-
-      footer {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 0;
-      }
-    }
-
-    @media (min-width: 1400px) {
-      .logo-watermark {
-        width: 450px;
-        height: 450px;
-      }
-
-      h1 {
-        font-size: 4em;
-      }
-    }
-
     h1 {
       margin-bottom: 30px;
       color: var(--text-heading);
@@ -713,7 +611,7 @@
     Linktree Outlet PGI
     <span class="subtitle-text">🔐 password : 4291</span>
   </a>
-  <a class="link-button" href="https://jadwal-kerja.vercel.app/" target="_blank" rel="noopener noreferrer">Kalender PGI</a>
+  <a class="link-button" href="https://jadwal-kerja.vercel.app/" target="_blank" rel="noopener noreferrer">Jadwal Libur</a>
   <a class="link-button" href="https://notebooklm.google.com/notebook/d40f54cc-474b-4d0a-955c-d48ba41d9489" target="_blank" rel="noopener noreferrer">Panduan SE</a>
   <a class="link-button" href="https://www.imei.info/" target="_blank" rel="noopener noreferrer">IMEI Info</a>
 
