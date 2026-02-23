@@ -208,11 +208,11 @@
       filter: drop-shadow(0 2px 8px rgba(21,101,192,0.2));
     }
     .d-title-img {
-      max-width: 200px; width: 85%; height: auto;
-      display: block; margin: 0 auto 6px;
+      max-width: 360px; width: 100%; height: auto;
+      display: block; margin: 0 0 4px 0;
       position: relative; z-index: 1;
       transition: opacity 0.3s ease;
-      filter: drop-shadow(0 2px 10px rgba(21,101,192,0.3));
+      filter: drop-shadow(0 2px 10px rgba(21,101,192,0.2));
     }
   </style>
 </head>
@@ -257,9 +257,6 @@
   <div id="desktopLayout">
     <div class="d-left">
       <img class="d-logo" src="dragbran.png" alt="PGI Logo" />
-      <img id="titleImgDesktop" class="d-title-img" src="tittlelight.png" alt="PGI Core" />
-      <div class="d-line"></div>
-      <div class="d-sub">Pusat Gadai Indonesia</div>
       <div class="d-qr">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://apkpure.net/id/device-info-system-cpu-info/com.ytheekshana.deviceinfo/download/3.3.5.16" alt="QR Device Info" />
         <p>Scan untuk download Device Info</p>
@@ -267,7 +264,8 @@
       <div class="d-footer">&copy; N. Senggara Wibiksono &ndash; PGI</div>
     </div>
     <div class="d-right">
-      <div class="d-section-label">Menu Utama</div>
+      <img id="titleImgDesktop" class="d-title-img" src="tittlelight.png" alt="PGI Core" />
+      <div class="d-section-label" style="margin-top:24px;">Menu Utama</div>
       <div class="d-grid">
         <a class="link-button" href="https://gadai.pugindo.com/gadai/simulasi" target="_blank" rel="noopener noreferrer">
           <span class="btn-icon">💰</span><span class="btn-label">PUGINDO</span>
