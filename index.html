@@ -201,7 +201,7 @@
     }
     /* TITLE IMAGE */
     .title-img-mobile {
-      max-width: 260px; width: 80%; height: auto;
+      max-width: 200px; width: 65%; height: auto;
       margin: 0 auto 28px; display: block;
       position: relative; z-index: 1;
       transition: opacity 0.3s ease;
@@ -248,8 +248,8 @@
     <a class="link-button" href="https://jadwal-kerja.vercel.app/" target="_blank" rel="noopener noreferrer">Kalender PGI</a>
     <a class="link-button" href="https://notebooklm.google.com/notebook/d40f54cc-474b-4d0a-955c-d48ba41d9489" target="_blank" rel="noopener noreferrer">Panduan SE</a>
     <a class="link-button" href="https://www.imei.info/" target="_blank" rel="noopener noreferrer">IMEI Info</a>
-    <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://apkpure.net/id/device-info-system-cpu-info/com.ytheekshana.deviceinfo/download/3.3.5.16" alt="QR Code Device Info" />
-    <p style="font-size:0.8em;color:var(--text-primary);margin-top:8px;opacity:0.8;">Scan untuk download Device Info</p>
+    <a class="link-button" href="#" onclick="openDeviceInfo(event)">Device Info App<span class="subtitle-text">Scan QR untuk download</span></a>
+
     <footer>&copy; N. Senggara Wibiksono &ndash; PGI</footer>
   </div>
 
@@ -257,15 +257,11 @@
   <div id="desktopLayout">
     <div class="d-left">
       <img class="d-logo" src="dragbran.png" alt="PGI Logo" />
-      <div class="d-qr">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://apkpure.net/id/device-info-system-cpu-info/com.ytheekshana.deviceinfo/download/3.3.5.16" alt="QR Device Info" />
-        <p>Scan untuk download Device Info</p>
-      </div>
       <div class="d-footer">&copy; N. Senggara Wibiksono &ndash; PGI</div>
     </div>
     <div class="d-right">
       <img id="titleImgDesktop" class="d-title-img" src="tittlelight.png" alt="PGI Core" />
-      <div class="d-section-label" style="margin-top:24px;">Menu Utama</div>
+      <div class="d-section-label" style="margin-top:24px;">Dashboard</div>
       <div class="d-grid">
         <a class="link-button" href="https://gadai.pugindo.com/gadai/simulasi" target="_blank" rel="noopener noreferrer">
           <span class="btn-icon">💰</span><span class="btn-label">PUGINDO</span>
@@ -286,6 +282,10 @@
         </a>
         <a class="link-button" href="https://www.imei.info/" target="_blank" rel="noopener noreferrer">
           <span class="btn-icon">📱</span><span class="btn-label">IMEI Info</span>
+        </a>
+        <a class="link-button" href="#" onclick="openDeviceInfo(event)">
+          <span class="btn-icon">📲</span><span class="btn-label">Device Info App</span>
+          <span class="subtitle-text">Scan QR untuk download</span>
         </a>
       </div>
     </div>
@@ -313,6 +313,19 @@
       <a class="link-button" href="https://docs.google.com/spreadsheets/d/1pc7jpByNfvxbkIgzjxoCWfSE-MSd8DzbbOiguu3DiMw/edit?gid=1814821964#gid=1814821964" target="_blank" rel="noopener noreferrer" onclick="closeArchive()">Monitoring Omset BDG026</a>
       <a class="link-button" href="https://docs.google.com/spreadsheets/d/1XjU4lj1Y_loAXl068MdlrR33E6jeeDOL/edit?gid=1091851198#gid=1091851198" target="_blank" rel="noopener noreferrer" onclick="closeArchive()">Report Omset KC Rohman</a>
       <button class="btn-cancel" onclick="closeArchive()">Tutup</button>
+    </div>
+  </div>
+
+  <!-- Device Info Modal -->
+  <div class="modal" id="deviceInfoModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeDeviceInfo()">×</button>
+      <h2>Device Info App</h2>
+      <p class="subtitle">Scan QR untuk download APK</p>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://apkpure.net/id/device-info-system-cpu-info/com.ytheekshana.deviceinfo/download/3.3.5.16" alt="QR Device Info" style="width:180px;height:180px;border-radius:12px;margin:10px auto;display:block;box-shadow:0 4px 16px rgba(21,101,192,0.2);" />
+      <p style="font-size:0.78em;opacity:0.6;margin-top:12px;color:var(--text-primary);">atau</p>
+      <a class="link-button" href="https://apkpure.net/id/device-info-system-cpu-info/com.ytheekshana.deviceinfo/download/3.3.5.16" target="_blank" rel="noopener noreferrer" onclick="closeDeviceInfo()" style="margin-top:12px;">Download Langsung</a>
+      <button class="btn-cancel" onclick="closeDeviceInfo()">Tutup</button>
     </div>
   </div>
 
@@ -386,6 +399,8 @@
       setTimeout(() => h.classList.remove('show'), 2000);
     }
 
+    function openDeviceInfo(e) { e.preventDefault(); document.getElementById('deviceInfoModal').classList.add('active'); }
+    function closeDeviceInfo() { document.getElementById('deviceInfoModal').classList.remove('active'); }
     function openSenku(e) { e.preventDefault(); document.getElementById('senkuModal').classList.add('active'); }
     function closeSenku() { document.getElementById('senkuModal').classList.remove('active'); }
     function openArchive() { document.getElementById('archiveModal').classList.add('active'); showHint('Senggara Archive Terbuka!'); }
